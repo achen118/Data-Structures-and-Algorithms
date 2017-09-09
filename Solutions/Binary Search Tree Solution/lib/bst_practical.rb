@@ -4,11 +4,11 @@ def kth_largest(tree_node, k)
 end
 
 def reverse_inorder(tree_node, kth_node, k)
-  if tree_node && kth_node[:count] < k 
+  if tree_node && kth_node[:count] < k
     kth_node = reverse_inorder(tree_node.right, kth_node, k)
-    if kth_node[:count] < k 
+    if kth_node[:count] < k
       kth_node[:count] += 1
-      kth_node[:correct_node] = tree_node 
+      kth_node[:correct_node] = tree_node
     end
 
     if kth_node[:count] < k
