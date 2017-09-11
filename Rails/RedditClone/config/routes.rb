@@ -1,4 +1,13 @@
 PostsApp::Application.routes.draw do
+
+  resource :sessions, only: [:new, :create, :destroy]
+
+  resources :users, only: [:new, :create]
+
+  resources :posts, only: [:new, :create, :index, :update, :show, :destroy]
+
+  resources :tags, only: [:create, :update, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
