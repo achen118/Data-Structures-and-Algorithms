@@ -1,12 +1,25 @@
 require_relative 'binary_search_tree'
 
 # ____________________________________________________________________
-# Problem 1: Minimum Depth
+# Problem 1: Minimum / Maximum Depth
 # ____________________________________________________________________
 
+def minimum_depth(tree_node)
+  depth = 0
+  
+
+  depth
+end
+
+def maximum_depth(tree_node)
+
+end
 # ____________________________________________________________________
-# Problem 2: Maximum Depth
+# Problem 2: Maximum Path Sum
 # ____________________________________________________________________
+
+def max_path_sum(bst)
+end
 
 # ____________________________________________________________________
 # Problem 3: Array is Possible Pre-order
@@ -20,14 +33,25 @@ require_relative 'binary_search_tree'
 # Problem 5: Bottom View Binary Tree
 # ____________________________________________________________________
 
-# In a binary search tree, an *ancestor* of a `example_node` is a node
-# that is on a higher level than `example_node`, and can be traced directly
-# back to `example_node` without going up any levels. (I.e., this is
-# intuitively what you think an ancestor should be.) Every node in a binary
-# tree shares at least one ancestor -- the root. In this exercise, write a
-# function that takes in a BST and two nodes, and returns the node that is the
-# lowest common ancestor of the given nodes. Assume no duplicate values.
+# ____________________________________________________________________
+# Problem 6: Print Nodes in Top View of Binary Tree
+# ____________________________________________________________________
 
+# ____________________________________________________________________
+# Problem 7: Remove paths greater than length k
+# ____________________________________________________________________
+
+# ____________________________________________________________________
+# Problem 8: Lowest Common Ancestor
+# ____________________________________________________________________
+
+    # In a binary search tree, an *ancestor* of a `example_node` is a node
+    # that is on a higher level than `example_node`, and can be traced directly
+    # back to `example_node` without going up any levels. (I.e., this is
+    # intuitively what you think an ancestor should be.) Every node in a binary
+    # tree shares at least one ancestor -- the root. In this exercise, write a
+    # function that takes in a BST and two nodes, and returns the node that is the
+    # lowest common ancestor of the given nodes. Assume no duplicate values.
 
 def lca(bst, node1, node2)
   #first find depth of both
@@ -67,8 +91,13 @@ end
 
 
 # ____________________________________________________________________
-# Problem 2: Maximum Depth
+# Problem 9: Subtree of another BST?
 # ____________________________________________________________________
+
+# ____________________________________________________________________
+# Problem 10: Reverse Alternate Levels of a perfect BST
+# ____________________________________________________________________
+
 
 
 
@@ -83,8 +112,9 @@ bst = BinarySearchTree.new
   bst.insert(el)
 end
 
+root = bst.root
 #############################
-# prefilled_bst looks like: #
+# bst looks like:           #
 #             (5)           #
 #            /   \          #
 #          (3)   (7)        #
@@ -96,7 +126,60 @@ end
 #      (1.5)                #
 #############################
 
+bst2 = BinarySearchTree.new
+[5, 3, 7, 4].each do |el|
+  bst.insert(el)
+end
 
+root2 = bst.root
+#############################
+# bst2 looks like:          #
+#             (5)           #
+#            /   \          #
+#          (3)   (7)        #
+#            \              #
+#            (4)            #
+#                           #
+#############################
+
+
+
+# ____________________________________________________________________
+# Problem 1: Minimum Depth
+
+p 'Problem 1: Minimum Depth'
+p 'test 1'
+p minimum_depth(root) == 3
+p minimum_depth(root2) == 2
+p 'test 2'
+p maximum_depth(root) == 5
+p maximum_depth(root2) == 3
+
+
+# ____________________________________________________________________
+# Problem 2: Maximum Depth
+
+# ____________________________________________________________________
+# Problem 3: Array is Possible Pre-order
+
+# ____________________________________________________________________
+# Problem 4: Full or Nah?
+
+# ____________________________________________________________________
+# Problem 5: Bottom View Binary Tree
+
+# ____________________________________________________________________
+# Problem 6: Print Nodes in Top View of Binary Tree
+
+# ____________________________________________________________________
+# Problem 7: Remove paths greater than length k
+
+#____________________________________________________________________
+# Problem 8: Lowest Common Ancestor
+
+
+
+p 'Problem 8: LCA'
 node1 = bst.find(1.5)
 node2 = bst.find(4)
 target = bst.find(3)
@@ -127,3 +210,9 @@ target = bst.find(1.5)
 
 p 'test 4'
 p lca(bst, node1, node2) == target
+
+# ____________________________________________________________________
+# Problem 9: Subtree of another BST?
+
+# ____________________________________________________________________
+# Problem 10: Reverse Alternate Levels of a Perfect BST

@@ -75,7 +75,7 @@ class BinarySearchTree
 
     max_depth + 1
   end
-
+  
 
   def is_balanced?(tree_node = @root)
     return true if depth(tree_node) < 2
