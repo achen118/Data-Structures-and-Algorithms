@@ -62,7 +62,7 @@ def possible_pre_order?(array)
   array.each do |el|
     return false if el < current_root
 
-    while !stack.empty? && stack[-1] < el
+    while !stack.empty? && el > stack[-1]
       current_root = stack.pop
     end
 
@@ -86,13 +86,37 @@ end
 # Problem 5: Bottom View Binary Tree
 # ____________________________________________________________________
 
+def bottom_view(root)
+  tree_map = { }
+  queue = [[root, 0]]
+
+  until queue.empty?
+    node, level = queue.shift
+    tree_map[level] = node.value
+    queue << [node.left, level - 1] if node.left
+    queue << [node.right, level + 1] if node.right
+  end
+
+
+  tree_map.keys.sort.map { |level| tree_map[level] }
+
+end
+
 # ____________________________________________________________________
 # Problem 6: Print Nodes in Top View of Binary Tree
 # ____________________________________________________________________
 
+def top_view_print(bt)
+
+end
+
 # ____________________________________________________________________
 # Problem 7: Remove paths greater than length k
 # ____________________________________________________________________
+
+def limit_path_length(bt)
+
+end
 
 # ____________________________________________________________________
 # Problem 8: Lowest Common Ancestor
@@ -147,6 +171,10 @@ end
 # Problem 9: Subtree of another BST?
 # ____________________________________________________________________
 
+def valid_subtree?(root1, root2)
+
+end
+
 # ____________________________________________________________________
 # Problem 10: Reverse Alternate Levels of a perfect BST
 # ____________________________________________________________________
@@ -182,6 +210,7 @@ root = bst.root
 bst_pre_order = [5, 3, 1, 0, 2, 1.5, 4, 7, 9, 10]
 bst_post_order = [0, 1.5, 2, 1, 4, 3, 10, 9, 7, 5]
 bst_max_path = [1.5, 2, 1, 3, 5, 7, 9, 10].reduce(:+)
+bst_bottom_view = [0, 1.5, 2, 4, 7, 9, 10]
 
 
 bst2 = BinarySearchTree.new
@@ -203,6 +232,7 @@ root2 = bst2.root
 bst2_pre_order = [5, 3, -1, 4, 7]
 bst2_post_order = [-1, 4, 3, 7, 5]
 bst2_max_path = [4, 3, 5, 7].reduce(:+)
+bst2_bottom_view = [-1, 3, 4, 7]
 
 
 bt = BinaryTree.new(10)
@@ -216,13 +246,14 @@ bt.root.right.right.append_left(3)
 #             (10)          #
 #            /   \          #
 #          (2)   (10)       #
-#         /  \      \       #
-#      (20)  (1)   (-25)    #
+#         /   \     \       #
+#      (20)   (1)   (-25)    #
 #                  /  \     #
 #                (3)  (4)   #
 #############################
 
 bt_max_path = [20, 2, 10, 10].reduce(:+)
+bt_bottom_view = [20, 2, 1, 3, 25, 4]
 
 # ____________________________________________________________________
 # Problem 0: Traversals
@@ -452,15 +483,13 @@ puts
 p ' ---------- Problem 5: Bottom View ---------- '
 puts
 
-result1 = false
-result2 = false
-result3 = false
-result4 = false
+result1 = bottom_view(bst.root)
+result2 = bottom_view(bst2.root)
+result3 = bottom_view(bt.root)
 
-expect1 = true
-expect2 = true
-expect3 = true
-expect4 = true
+expect1 = bst_bottom_view
+expect2 = bst2_bottom_view
+expect3 = bt_bottom_view
 
 
 
@@ -479,12 +508,7 @@ p "  result: #{result3}"
 p "expected: #{expect3}"
 p test3 = result3 == expect3
 
-p '~~ test 4 ~~'
-p "  result: #{result4}"
-p "expected: #{expect4}"
-p test4 = result4 == expect4
-
-p5_tests = [test1, test2, test3, test4]
+p5_tests = [test1, test2, test3]
 test_count = p5_tests.count
 tests_passed = p5_tests.count(true)
 
