@@ -31,17 +31,11 @@ end
 def max_path_sum(bt)
   max_hash = { max_path: 0, max_single: 0}
   result_hash = max_path_finder(bt.root, max_hash)
-  p "result_hash = #{result_hash}"
-  result = result_hash[:max_single]
-  p "result = #{result}"
+  result_hash[:max_single]
 end
 
 def max_path_finder(tree_node, max_hash)
-  puts
-  p max_hash
   return max_hash unless tree_node
-  p tree_node.value
-  puts
 
   left_single = max_path_finder(tree_node.left, max_hash)[:max_single]
   right_single = max_path_finder(tree_node.right, max_hash)[:max_single]
@@ -60,6 +54,23 @@ end
 # ____________________________________________________________________
 # Problem 3: Array is Possible Pre-order
 # ____________________________________________________________________
+
+  def possible_pre_order?(bst, array)
+    stack = []
+  end
+#
+#   1) Create an empty stack.
+# 2) Initialize root as INT_MIN.
+# 3) Do following for every element pre[i]
+#      a) If pre[i] is smaller than current root, return false.
+#      b) Keep removing elements from stack while pre[i] is greater
+#         then stack top. Make the last removed item as new root (to
+#         be compared next).
+#         At this point, pre[i] is greater than the removed root
+#         (That is why if we see a smaller element in step a), we
+#         return false)
+#      c) push pre[i] to stack (All elements in stack are in decreasing
+#         order)
 
 # ____________________________________________________________________
 # Problem 4: Full or Nah?
@@ -162,12 +173,15 @@ root = bst.root
 #      (1.5)                #
 #############################
 
+bst_pre_order = [5, 3, 1, 0, 2, 1.5, 4, 7, 9, 10]
+bst_post_order = [0, 1.5, 2, 1, 4, 3, 10, 9, 7, 5]
+bst_max_path = [1.5, 2, 1, 3, 5, 7, 9, 10].reduce(:+)
+
+
 bst2 = BinarySearchTree.new
 [5, 3, 7, 4, -1].each do |el|
   bst2.insert(el)
 end
-
-bst_max_path = [1.5, 2, 1, 3, 5, 7, 9, 10].reduce(:+)
 
 root2 = bst2.root
 #############################
@@ -180,7 +194,10 @@ root2 = bst2.root
 #                           #
 #############################
 
+bst2_pre_order = [5, 3, -1, 4, 7]
+bst2_post_order = [-1, 4, 3, 7, 5]
 bst2_max_path = [4, 3, 5, 7].reduce(:+)
+
 
 bt = BinaryTree.new(10)
 bt.root.append_left(2).append_left(20)
@@ -202,6 +219,33 @@ bt.root.right.right.append_left(3)
 bt_max_path = [20, 2, 10, 10].reduce(:+)
 
 # ____________________________________________________________________
+# Problem 0: Traversals
+
+p ' ---------- Problem 0: Traversals ---------- '
+puts
+p 'Pre-Order:'
+p '~~ test 1 ~~'
+p test1 = bst.pre_order_traversal == bst_pre_order
+p '~~ test 2 ~~'
+p test2 = bst2.pre_order_traversal == bst2_pre_order
+puts
+p 'Post-Order:'
+p '~~ test 3 ~~'
+p test3 = bst.post_order_traversal == bst_post_order
+p '~~ test 4 ~~'
+p test4 = bst2.post_order_traversal == bst2_post_order
+
+p0_tests = [test1, test2, test3, test4]
+test_count = p0_tests.count
+tests_passed = p0_tests.count(true)
+
+p0_total = tests_passed
+
+puts
+p "passed #{p0_total} out of #{test_count} tests"
+puts
+
+# ____________________________________________________________________
 # Problem 1: Minimum Depth
 
 
@@ -213,20 +257,20 @@ p test1 = minimum_depth(root) == 2
 p '~~ test 2 ~~'
 p test2 = minimum_depth(root2) == 1
 puts
-p 'Maximum Depth'
+p 'Maximum Depth:'
 p '~~ test 3 ~~'
 p test3 = maximum_depth(root) == 4
 p '~~ test 4 ~~'
 p test4 = maximum_depth(root2) == 2
 
-tests = [test1, test2, test3, test4]
-test_count = tests.count
-tests_passed = tests.count(true)
+p1_tests = [test1, test2, test3, test4]
+test_count = p1_tests.count
+tests_passed = p1_tests.count(true)
 
 p1_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p1_total} out of #{test_count} tests"
 puts
 # ____________________________________________________________________
 # Problem 2: Maximum Path Sum
@@ -247,14 +291,14 @@ p "max path = #{bt_max_path}"
 p test3 = max_path_sum(bt) == bst2_max_path
 
 
-tests = [test1, test2, test3]
-test_count = tests.count
-tests_passed = tests.count(true)
+p2_tests = [test1, test2, test3]
+test_count = p2_tests.count
+tests_passed = p2_tests.count(true)
 
 p2_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p2_total} out of #{test_count} tests"
 puts
 
 # ____________________________________________________________________
@@ -264,25 +308,25 @@ p ' ---------- Problem 3: Possible Pre-Order? ---------- '
 puts
 
 p '~~ test 1 ~~'
-# p test1 =
+p test1 = false
 
 p '~~ test 2 ~~'
-# p test2 =
+p test2 = false
 
 p '~~ test 3 ~~'
-# p test3 =
+p test3 = false
 
 p '~~ test 4 ~~'
-# p test4 =
+p test4 = false
 
-tests = [test1, test2, test3, test4]
-test_count = tests.count
-tests_passed = tests.count(true)
+p3_tests = [test1, test2, test3, test4]
+test_count = p3_tests.count
+tests_passed = p3_tests.count(true)
 
 p3_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p3_total} out of #{test_count} tests"
 puts
 
 # ____________________________________________________________________
@@ -292,25 +336,25 @@ p ' ---------- Problem 4: Full Tree? ---------- '
 puts
 
 p '~~ test 1 ~~'
-# p test1 =
+p test1 = false
 
 p '~~ test 2 ~~'
-# p test2 =
+p test2 = false
 
 p '~~ test 3 ~~'
-# p test3 =
+p test3 = false
 
 p '~~ test 4 ~~'
-# p test4 =
+p test4 = false
 
-tests = [test1, test2, test3, test4]
-test_count = tests.count
-tests_passed = tests.count(true)
+p4_tests = [test1, test2, test3, test4]
+test_count = p4_tests.count
+tests_passed = p4_tests.count(true)
 
 p4_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p4_total} out of #{test_count} tests"
 puts
 
 # ____________________________________________________________________
@@ -320,25 +364,25 @@ p ' ---------- Problem 5: Bottom View ---------- '
 puts
 
 p '~~ test 1 ~~'
-# p test1 =
+p test1 = false
 
 p '~~ test 2 ~~'
-# p test2 =
+p test2 = false
 
 p '~~ test 3 ~~'
-# p test3 =
+p test3 = false
 
 p '~~ test 4 ~~'
-# p test4 =
+p test4 = false
 
-tests = [test1, test2, test3, test4]
-test_count = tests.count
-tests_passed = tests.count(true)
+p5_tests = [test1, test2, test3, test4]
+test_count = p5_tests.count
+tests_passed = p5_tests.count(true)
 
 p5_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p5_total} out of #{test_count} tests"
 puts
 
 # ____________________________________________________________________
@@ -348,25 +392,25 @@ p ' ---------- Problem 6: Top View Print ---------- '
 puts
 
 p '~~ test 1 ~~'
-# p test1 =
+p test1 = false
 
 p '~~ test 2 ~~'
-# p test2 =
+p test2 = false
 
 p '~~ test 3 ~~'
-# p test3 =
+p test3 = false
 
 p '~~ test 4 ~~'
-# p test4 =
+p test4 = false
 
-tests = [test1, test2, test3, test4]
-test_count = tests.count
-tests_passed = tests.count(true)
+p6_tests = [test1, test2, test3, test4]
+test_count = p6_tests.count
+tests_passed = p6_tests.count(true)
 
 p6_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p6_total} out of #{test_count} tests"
 puts
 
 # ____________________________________________________________________
@@ -376,25 +420,25 @@ p ' ---------- Problem 7: Remove paths of length > K ---------- '
 puts
 
 p '~~ test 1 ~~'
-# p test1 =
+p test1 = false
 
 p '~~ test 2 ~~'
-# p test2 =
+p test2 = false
 
 p '~~ test 3 ~~'
-# p test3 =
+p test3 = false
 
 p '~~ test 4 ~~'
-# p test4 =
+p test4 = false
 
-tests = [test1, test2, test3, test4]
-test_count = tests.count
-tests_passed = tests.count(true)
+p7_tests = [test1, test2, test3, test4]
+test_count = p7_tests.count
+tests_passed = p7_tests.count(true)
 
-p2_total = tests_passed
+p7_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p7_total} out of #{test_count} tests"
 puts
 
 #____________________________________________________________________
@@ -435,14 +479,14 @@ target = bst.find(1.5)
 p '~~ test 4 ~~'
 p test4 = lca(bst, node1, node2) == target
 
-tests = [test1, test2, test3, test4]
-test_count = tests.count
-tests_passed = tests.count(true)
+p8_tests = [test1, test2, test3, test4]
+test_count = p8_tests.count
+tests_passed = p8_tests.count(true)
 
 p8_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p8_total} out of #{test_count} tests"
 puts
 # ____________________________________________________________________
 # Problem 9: Subtree of another BST?
@@ -451,25 +495,25 @@ p ' ---------- Problem 9: Possible Subtree? ---------- '
 puts
 
 p '~~ test 1 ~~'
-# p test1 =
+p test1 = false
 
 p '~~ test 2 ~~'
-# p test2 =
+p test2 = false
 
 p '~~ test 3 ~~'
-# p test3 =
+p test3 = false
 
 p '~~ test 4 ~~'
-# p test4 =
+p test4 = false
 
-tests = [test1, test2, test3, test4]
-test_count = tests.count
-tests_passed = tests.count(true)
+p9_tests = [test1, test2, test3, test4]
+test_count = p9_tests.count
+tests_passed = p9_tests.count(true)
 
 p9_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p9_total} out of #{test_count} tests"
 puts
 
 # ____________________________________________________________________
@@ -479,23 +523,39 @@ p ' ---------- Problem 10: Possible Subtree? ---------- '
 puts
 
 p '~~ test 1 ~~'
-# p test1 =
+p test1 = false
 
 p '~~ test 2 ~~'
-# p test2 =
+p test2 = false
 
 p '~~ test 3 ~~'
-# p test3 =
+p test3 = false
 
 p '~~ test 4 ~~'
-# p test4 =
+p test4 = false
 
-tests = [test1, test2, test3, test4]
-test_count = tests.count
-tests_passed = tests.count(true)
+p10_tests = [test1, test2, test3, test4]
+test_count = p10_tests.count
+tests_passed = p10_tests.count(true)
 
 p10_total = tests_passed
 
 puts
-p "passed #{tests_passed} out of #{test_count} tests"
+p "passed #{p10_total} out of #{test_count} tests"
 puts
+
+puts
+puts
+
+total_passes = [p0_total, p1_total, p2_total, p3_total, p4_total,
+                p5_total, p6_total, p7_total, p8_total, p9_total,
+                p10_total].reduce(:+)
+total_tests = [p0_tests, p1_tests, p2_tests, p3_tests, p4_tests,
+               p5_tests, p6_tests, p7_tests, p8_tests, p9_tests,
+               p10_tests].flatten.count
+p '____________________________________________________________________'
+p 'total passes:'
+p "#{total_passes} out of #{total_tests}"
+puts
+p "#{total_tests - total_passes} failures"
+p '____________________________________________________________________'
