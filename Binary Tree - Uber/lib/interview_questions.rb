@@ -77,7 +77,7 @@ end
 
 def full_tree?(tree_node)
   return true unless tree_node
-  return true if tree_node.children.empty
+  return true if tree_node.children.empty?
   return false if tree_node.children.length == 1
   full_tree?(tree_node.left) && full_tree?(tree_node.right)
 end
@@ -416,7 +416,7 @@ result3 = full_tree?(bt.root)
 
 expect1 = false
 expect2 = true
-expect3 = true
+expect3 = false
 
 
 

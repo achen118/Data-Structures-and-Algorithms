@@ -22,6 +22,15 @@ class TreeNode
     @right
   end
 
+  def children
+    children = []
+    
+    children << @left if @left
+    children << @right if @right
+    
+    children
+  end
+
 end
 
 class BinaryTree
