@@ -55,8 +55,19 @@ end
 # Problem 3: Array is Possible Pre-order
 # ____________________________________________________________________
 
-  def possible_pre_order?(bst, array)
+  def possible_pre_order?(array)
     stack = []
+    current_root = array.min - 1
+
+    array.each do |el|
+      return false if el < current_root
+      while stack.length < 0 && stack[-1] > el
+        current_root = stack.pop
+      end
+
+      stack << el
+
+    end
   end
 #
 #   1) Create an empty stack.
