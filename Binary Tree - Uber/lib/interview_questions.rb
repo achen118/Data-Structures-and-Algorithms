@@ -55,34 +55,22 @@ end
 # Problem 3: Array is Possible Pre-order
 # ____________________________________________________________________
 
-  def possible_pre_order?(array)
-    stack = []
-    current_root = array.min - 1
+def possible_pre_order?(array)
+  stack = []
+  current_root = array.min - 1
 
-    array.each do |el|
-      return false if el < current_root
-      while stack.length < 0 && stack[-1] > el
-        current_root = stack.pop
-      end
+  array.each do |el|
+    return false if el < current_root
 
-      stack << el
-
+    while !stack.empty? && stack[-1] < el
+      current_root = stack.pop
     end
-  end
-#
-#   1) Create an empty stack.
-# 2) Initialize root as INT_MIN.
-# 3) Do following for every element pre[i]
-#      a) If pre[i] is smaller than current root, return false.
-#      b) Keep removing elements from stack while pre[i] is greater
-#         then stack top. Make the last removed item as new root (to
-#         be compared next).
-#         At this point, pre[i] is greater than the removed root
-#         (That is why if we see a smaller element in step a), we
-#         return false)
-#      c) push pre[i] to stack (All elements in stack are in decreasing
-#         order)
 
+    stack << el
+  end
+
+  true
+end
 # ____________________________________________________________________
 # Problem 4: Full or Nah?
 # ____________________________________________________________________
@@ -232,19 +220,37 @@ bt_max_path = [20, 2, 10, 10].reduce(:+)
 # ____________________________________________________________________
 # Problem 0: Traversals
 
+result1 = bst.pre_order_traversal
+result2 = bst2.pre_order_traversal
+result3 = bst.post_order_traversal
+result4 = bst2.post_order_traversal
+
+expect1 = bst_pre_order
+expect2 = bst2_pre_order
+expect3 = bst_post_order
+expect4 = bst2_post_order
+
 p ' ---------- Problem 0: Traversals ---------- '
 puts
 p 'Pre-Order:'
 p '~~ test 1 ~~'
-p test1 = bst.pre_order_traversal == bst_pre_order
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = expect1 == result1
 p '~~ test 2 ~~'
-p test2 = bst2.pre_order_traversal == bst2_pre_order
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = expect2 == result2
 puts
 p 'Post-Order:'
 p '~~ test 3 ~~'
-p test3 = bst.post_order_traversal == bst_post_order
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = expect3 == result3
 p '~~ test 4 ~~'
-p test4 = bst2.post_order_traversal == bst2_post_order
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = expect4 == result4
 
 p0_tests = [test1, test2, test3, test4]
 test_count = p0_tests.count
@@ -259,20 +265,38 @@ puts
 # ____________________________________________________________________
 # Problem 1: Minimum Depth
 
+result1 = minimum_depth(root)
+result2 = minimum_depth(root2)
+result3 = maximum_depth(root)
+result4 = maximum_depth(root2)
+
+expect1 =  2
+expect2 =  1
+expect3 =  4
+expect4 =  2
+
 
 p ' ---------- Problem 1: Depth ---------- '
 puts
 p 'Minimum Depth:'
 p '~~ test 1 ~~'
-p test1 = minimum_depth(root) == 2
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = expect1 == result1
 p '~~ test 2 ~~'
-p test2 = minimum_depth(root2) == 1
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = expect2 == result2
 puts
 p 'Maximum Depth:'
 p '~~ test 3 ~~'
-p test3 = maximum_depth(root) == 4
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = expect3 == result3
 p '~~ test 4 ~~'
-p test4 = maximum_depth(root2) == 2
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = expect4 == result4
 
 p1_tests = [test1, test2, test3, test4]
 test_count = p1_tests.count
@@ -289,17 +313,31 @@ puts
 p ' ---------- Problem 2: Maximum Path Sum ---------- '
 puts
 
+result1 = max_path_sum(bst)
+result2 = max_path_sum(bst2)
+result3 = max_path_sum(bt)
+
+expect1 = bst_max_path
+expect2 = bst2_max_path
+expect3 = bst2_max_path
+
 p '~~ test 1 ~~'
 p "max path = #{bst_max_path}"
-p test1 = max_path_sum(bst) == bst_max_path
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = expect1 == result1
 
 p '~~ test 2 ~~'
 p "max path = #{bst2_max_path}"
-p test2 = max_path_sum(bst2) == bst2_max_path
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = expect2 == result2
 
 p '~~ test 3 ~~'
 p "max path = #{bt_max_path}"
-p test3 = max_path_sum(bt) == bst2_max_path
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = expect3 == result3
 
 
 p2_tests = [test1, test2, test3]
@@ -318,17 +356,37 @@ puts
 p ' ---------- Problem 3: Possible Pre-Order? ---------- '
 puts
 
+result1 = possible_pre_order?(bst_pre_order)
+result2 = possible_pre_order?(bst2_pre_order)
+result3 = possible_pre_order?([2, 4, 1])
+result4 = possible_pre_order?([40, 30, 35, 20, 80, 100])
+
+expect1 = true
+expect2 = true
+expect3 = false
+expect4 = false
+
+
+
 p '~~ test 1 ~~'
-p test1 = false
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = result1 == expect1
 
 p '~~ test 2 ~~'
-p test2 = false
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = result2 == expect2
 
 p '~~ test 3 ~~'
-p test3 = false
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = result3 == expect3
 
 p '~~ test 4 ~~'
-p test4 = false
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = result4 == expect4
 
 p3_tests = [test1, test2, test3, test4]
 test_count = p3_tests.count
@@ -345,18 +403,37 @@ puts
 
 p ' ---------- Problem 4: Full Tree? ---------- '
 puts
+result1 = false
+result2 = false
+result3 = false
+result4 = false
+
+expect1 = true
+expect2 = true
+expect3 = true
+expect4 = true
+
+
 
 p '~~ test 1 ~~'
-p test1 = false
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = result1 == expect1
 
 p '~~ test 2 ~~'
-p test2 = false
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = result2 == expect2
 
 p '~~ test 3 ~~'
-p test3 = false
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = result3 == expect3
 
 p '~~ test 4 ~~'
-p test4 = false
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = result4 == expect4
 
 p4_tests = [test1, test2, test3, test4]
 test_count = p4_tests.count
@@ -374,17 +451,37 @@ puts
 p ' ---------- Problem 5: Bottom View ---------- '
 puts
 
+result1 = false
+result2 = false
+result3 = false
+result4 = false
+
+expect1 = true
+expect2 = true
+expect3 = true
+expect4 = true
+
+
+
 p '~~ test 1 ~~'
-p test1 = false
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = result1 == expect1
 
 p '~~ test 2 ~~'
-p test2 = false
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = result2 == expect2
 
 p '~~ test 3 ~~'
-p test3 = false
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = result3 == expect3
 
 p '~~ test 4 ~~'
-p test4 = false
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = result4 == expect4
 
 p5_tests = [test1, test2, test3, test4]
 test_count = p5_tests.count
@@ -402,17 +499,37 @@ puts
 p ' ---------- Problem 6: Top View Print ---------- '
 puts
 
+result1 = false
+result2 = false
+result3 = false
+result4 = false
+
+expect1 = true
+expect2 = true
+expect3 = true
+expect4 = true
+
+
+
 p '~~ test 1 ~~'
-p test1 = false
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = result1 == expect1
 
 p '~~ test 2 ~~'
-p test2 = false
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = result2 == expect2
 
 p '~~ test 3 ~~'
-p test3 = false
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = result3 == expect3
 
 p '~~ test 4 ~~'
-p test4 = false
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = result4 == expect4
 
 p6_tests = [test1, test2, test3, test4]
 test_count = p6_tests.count
@@ -430,17 +547,37 @@ puts
 p ' ---------- Problem 7: Remove paths of length > K ---------- '
 puts
 
+result1 = false
+result2 = false
+result3 = false
+result4 = false
+
+expect1 = true
+expect2 = true
+expect3 = true
+expect4 = true
+
+
+
 p '~~ test 1 ~~'
-p test1 = false
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = result1 == expect1
 
 p '~~ test 2 ~~'
-p test2 = false
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = result2 == expect2
 
 p '~~ test 3 ~~'
-p test3 = false
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = result3 == expect3
 
 p '~~ test 4 ~~'
-p test4 = false
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = result4 == expect4
 
 p7_tests = [test1, test2, test3, test4]
 test_count = p7_tests.count
@@ -505,17 +642,37 @@ puts
 p ' ---------- Problem 9: Possible Subtree? ---------- '
 puts
 
+result1 = false
+result2 = false
+result3 = false
+result4 = false
+
+expect1 = true
+expect2 = true
+expect3 = true
+expect4 = true
+
+
+
 p '~~ test 1 ~~'
-p test1 = false
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = result1 == expect1
 
 p '~~ test 2 ~~'
-p test2 = false
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = result2 == expect2
 
 p '~~ test 3 ~~'
-p test3 = false
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = result3 == expect3
 
 p '~~ test 4 ~~'
-p test4 = false
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = result4 == expect4
 
 p9_tests = [test1, test2, test3, test4]
 test_count = p9_tests.count
@@ -533,17 +690,37 @@ puts
 p ' ---------- Problem 10: Possible Subtree? ---------- '
 puts
 
+result1 = false
+result2 = false
+result3 = false
+result4 = false
+
+expect1 = true
+expect2 = true
+expect3 = true
+expect4 = true
+
+
+
 p '~~ test 1 ~~'
-p test1 = false
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = result1 == expect1
 
 p '~~ test 2 ~~'
-p test2 = false
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = result2 == expect2
 
 p '~~ test 3 ~~'
-p test3 = false
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = result3 == expect3
 
 p '~~ test 4 ~~'
-p test4 = false
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = result4 == expect4
 
 p10_tests = [test1, test2, test3, test4]
 test_count = p10_tests.count
