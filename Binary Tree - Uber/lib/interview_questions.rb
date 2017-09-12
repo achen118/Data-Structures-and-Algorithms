@@ -75,6 +75,13 @@ end
 # Problem 4: Full or Nah?
 # ____________________________________________________________________
 
+def full_tree?(tree_node)
+  return true unless tree_node
+  return true if tree_node.children.empty
+  return false if tree_node.children.length == 1
+  full_tree?(tree_node.left) && full_tree?(tree_node.right)
+end
+
 # ____________________________________________________________________
 # Problem 5: Bottom View Binary Tree
 # ____________________________________________________________________
@@ -403,15 +410,13 @@ puts
 
 p ' ---------- Problem 4: Full Tree? ---------- '
 puts
-result1 = false
-result2 = false
-result3 = false
-result4 = false
+result1 = full_tree?(bst.root)
+result2 = full_tree?(bst2.root)
+result3 = full_tree?(bt.root)
 
-expect1 = true
+expect1 = false
 expect2 = true
 expect3 = true
-expect4 = true
 
 
 
@@ -430,12 +435,8 @@ p "  result: #{result3}"
 p "expected: #{expect3}"
 p test3 = result3 == expect3
 
-p '~~ test 4 ~~'
-p "  result: #{result4}"
-p "expected: #{expect4}"
-p test4 = result4 == expect4
 
-p4_tests = [test1, test2, test3, test4]
+p4_tests = [test1, test2, test3]
 test_count = p4_tests.count
 tests_passed = p4_tests.count(true)
 
