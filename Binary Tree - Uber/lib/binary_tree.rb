@@ -24,10 +24,10 @@ class TreeNode
 
   def children
     children = []
-    
+
     children << @left if @left
     children << @right if @right
-    
+
     children
   end
 

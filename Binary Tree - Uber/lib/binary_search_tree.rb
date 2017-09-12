@@ -76,6 +76,12 @@ class BinarySearchTree
     max_depth + 1
   end
 
+  def remove_leaf(node)
+    return @root = nil if node.parent.nil?
+    parent = node.parent
+    parent.left == node ? parent.left = nil : parent.right = nil
+    node.parent = nil
+  end
 
   def is_balanced?(tree_node = @root)
     return true if depth(tree_node) < 2
@@ -86,6 +92,13 @@ class BinarySearchTree
 
     is_balanced?(left) && is_balanced?(right)
   end
+
+
+
+
+  # # # TRAVERSALS # # #
+
+
 
   def in_order_traversal(tree_node = @root, arr = [])
     return [tree_node.value] unless tree_node.children
@@ -119,7 +132,7 @@ class BinarySearchTree
 
     left_arr.concat(post_order_traversal(left_sub)) if left_sub
     right_arr.concat(post_order_traversal(right_sub)) if right_sub
-    
+
     left_arr + right_arr + [tree_node.value]
   end
 

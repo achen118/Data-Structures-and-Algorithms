@@ -99,7 +99,6 @@ def bottom_view(root)
 
 
   tree_map.keys.sort.map { |level| tree_map[level] }
-
 end
 
 
@@ -126,11 +125,46 @@ def top_view(root)
 end
 
 # ____________________________________________________________________
-# Problem 7: Remove paths greater than length k
+# Problem 7: Remove paths less than length k
 # ____________________________________________________________________
 
-def limit_path_length(bt)
+def limit_path_length(binary_tree, k)
+  tree_map = Hash.new { |hash, key| hash[key] = 0 }
+  leaves = []
+  queue = [binary_tree.root]
 
+  until queue.empty?
+    node = queue.shift
+    if node.children.empty?
+      leaves << node
+    else
+      node.children.each { |child| queue << child }
+    end
+  end
+
+  leaves.each do |leaf|
+    node = leaf
+    value, depth = leaf.value, leaf.depth + 1
+    until node.parent.nil?
+      tree_map[node.value] = [tree_map[node.value], depth].max
+      node = node.parent
+      tree_map[node.value] = [tree_map[node.value], depth].max if node.parent.nil?
+    end
+  end
+
+  nodes_to_remove = tree_map.select { |_key, path_length| path_length < k }.keys
+
+  until nodes_to_remove.empty?
+    node = nodes_to_remove.shift
+    if node == binary_tree.root && !nodes_to_remove.empty?
+      queue << node
+      node = nodes_to_remove.shift
+    end
+
+    binary_tree.delete(node)
+  end
+
+  binary_tree
 end
 
 # ____________________________________________________________________
@@ -222,11 +256,16 @@ root = bst.root
 #      (1.5)                #
 #############################
 
+{4=>2, 3=>2, 0=>3, 1=>3, 10=>3, 9=>3, 7=>3, 1.5=>4, 2=>4}
+
 bst_pre_order = [5, 3, 1, 0, 2, 1.5, 4, 7, 9, 10]
 bst_post_order = [0, 1.5, 2, 1, 4, 3, 10, 9, 7, 5]
 bst_max_path = [1.5, 2, 1, 3, 5, 7, 9, 10].reduce(:+)
 bst_bottom_view = [0, 1.5, 2, 4, 7, 9, 10]
 bst_top_view = [0, 1, 3, 5, 7, 9, 10]
+bst_limit_3 = bst.in_order_traversal
+bst_limit_4 = bst_limit_3.reject { |e| e == 4 }
+bst_limit_5 = bst_limit_4.reject { |e| e == 0 || e > 6 }
 
 
 bst2 = BinarySearchTree.new
@@ -250,6 +289,8 @@ bst2_post_order = [-1, 4, 3, 7, 5]
 bst2_max_path = [4, 3, 5, 7].reduce(:+)
 bst2_bottom_view = [-1, 3, 4, 7]
 bst2_top_view = [-1, 3, 5, 7]
+bst2_limit_2 = bst2.in_order_traversal
+bst2_limit_3 = bst2_limit_2.reject { |e| e == 7 }
 
 
 bt = BinaryTree.new(10)
@@ -583,15 +624,42 @@ puts
 p ' ---------- Problem 7: Remove paths of length > K ---------- '
 puts
 
-result1 = false
-result2 = false
-result3 = false
-result4 = false
+bst_clone1 = BinarySearchTree.new
+[5, 3, 7, 1, 4, 9, 0, 2, 1.5, 10].each do |el|
+  bst_clone1.insert(el)
+end
+bst_clone2 = BinarySearchTree.new
+[5, 3, 7, 1, 4, 9, 0, 2, 1.5, 10].each do |el|
+  bst_clone2.insert(el)
+end
 
-expect1 = true
-expect2 = true
-expect3 = true
-expect4 = true
+bst_clone3 = BinarySearchTree.new
+[5, 3, 7, 1, 4, 9, 0, 2, 1.5, 10].each do |el|
+  bst_clone3.insert(el)
+end
+
+bst2_clone1 = BinarySearchTree.new
+[5, 3, 7, 4, -1].each do |el|
+  bst2_clone1.insert(el)
+end
+
+bst2_clone2 = BinarySearchTree.new
+[5, 3, 7, 4, -1].each do |el|
+  bst2_clone2.insert(el)
+end
+
+
+result1 = limit_path_length(bst_clone1, 3).in_order_traversal
+result2 = limit_path_length(bst_clone2, 4).in_order_traversal
+result3 = limit_path_length(bst_clone3, 5).in_order_traversal
+result4 = limit_path_length(bst2_clone1, 2).in_order_traversal
+result5 = limit_path_length(bst2_clone2, 3).in_order_traversal
+
+expect1 = bst_limit_3
+expect2 = bst_limit_4
+expect3 = bst_limit_5
+expect4 = bst2_limit_2
+expect5 = bst2_limit_3
 
 
 
@@ -615,7 +683,13 @@ p "  result: #{result4}"
 p "expected: #{expect4}"
 p test4 = result4 == expect4
 
-p7_tests = [test1, test2, test3, test4]
+p '~~ test 5 ~~'
+p "  result: #{result5}"
+p "expected: #{expect5}"
+p test5 = result5 == expect5
+
+
+p7_tests = [test1, test2, test3, test4, test5]
 test_count = p7_tests.count
 tests_passed = p7_tests.count(true)
 
