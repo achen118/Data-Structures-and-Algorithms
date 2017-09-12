@@ -40,10 +40,10 @@ class BSTNode
     @parent.left = self
   end
 
-  def depth(bst)
+  def depth
     counter = 0
     current_node = self
-    until current_node == bst.root
+    until current_node.parent.nil?
       counter += 1
       current_node = current_node.parent
     end

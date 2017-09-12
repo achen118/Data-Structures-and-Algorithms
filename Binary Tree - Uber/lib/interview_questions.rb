@@ -1,18 +1,28 @@
 require_relative 'binary_search_tree'
-
+require_relative 'binary_tree'
 # ____________________________________________________________________
 # Problem 1: Minimum / Maximum Depth
 # ____________________________________________________________________
 
 def minimum_depth(tree_node)
-  depth = 0
-  
+  queue = [tree_node]
 
-  depth
+  until queue.empty?
+    current_node = queue.shift
+    return current_node.depth if current_node.children.empty?
+    queue.concat(current_node.children)
+  end
+
 end
 
 def maximum_depth(tree_node)
-
+  return 0 unless tree_node
+  return 0 if tree_node.children.empty?
+  # p 'current_node'
+  # p tree_node.value
+  depths = [maximum_depth(tree_node.left), maximum_depth(tree_node.right)]
+  max_depth = depths.max
+  max_depth + 1
 end
 # ____________________________________________________________________
 # Problem 2: Maximum Path Sum
@@ -55,7 +65,7 @@ end
 
 def lca(bst, node1, node2)
   #first find depth of both
-  depth1, depth2 = node1.depth(bst), node2.depth(bst)
+  depth1, depth2 = node1.depth, node2.depth
 
             # worst case: N
             # average case: worse than logN
@@ -128,10 +138,10 @@ root = bst.root
 
 bst2 = BinarySearchTree.new
 [5, 3, 7, 4].each do |el|
-  bst.insert(el)
+  bst2.insert(el)
 end
 
-root2 = bst.root
+root2 = bst2.root
 #############################
 # bst2 looks like:          #
 #             (5)           #
@@ -149,11 +159,11 @@ root2 = bst.root
 
 p 'Problem 1: Minimum Depth'
 p 'test 1'
-p minimum_depth(root) == 3
-p minimum_depth(root2) == 2
+p minimum_depth(root) == 2
+p minimum_depth(root2) == 1
 p 'test 2'
-p maximum_depth(root) == 5
-p maximum_depth(root2) == 3
+p maximum_depth(root) == 4
+p maximum_depth(root2) == 2
 
 
 # ____________________________________________________________________
