@@ -104,13 +104,10 @@ class BinarySearchTree
     return [] unless tree_node
     return [tree_node.value] unless tree_node.children
 
-    left, right = tree_node.left, tree_node.right
+    left = in_order_traversal(tree_node.left)
+    right = in_order_traversal(tree_node.right)
 
-
-    left_arr = in_order_traversal(left)
-    right_arr = in_order_traversal(right)
-
-    left_arr + [tree_node.value] + right_arr
+    left + [tree_node.value] + right
   end
 
 
