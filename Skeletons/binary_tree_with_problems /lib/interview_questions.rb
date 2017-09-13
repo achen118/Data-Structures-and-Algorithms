@@ -1,6 +1,20 @@
 require_relative 'binary_search_tree'
 require_relative 'binary_tree'
 
+# ~*~ NB: question text: ~*~ #
+# ~*~ http://www.geeksforgeeks.org/top-10-algorithms-in-interview-questions/#algo4 ~*~ #
+
+
+
+
+# ~ # ~ #         DONT FORGET TODO PROBLEM 0,        # ~ # ~ #
+# ~ # ~ #        PRE AND POST-ORDER Traversals       # ~ # ~ #
+# ~ # ~ #            binary_search_tree.rb           # ~ # ~ #
+
+
+## NB: No specs for p9 ans p10
+
+
 # ____________________________________________________________________
 # Problem 1: Minimum / Maximum Depth
 # ____________________________________________________________________
@@ -64,7 +78,9 @@ end
 
 
 def limit_path_length(binary_tree, k)
+  #NB: specs break if you don't return the binary_tree
 
+  binary_tree
 end
 
 # ____________________________________________________________________
@@ -80,7 +96,9 @@ end
     # lowest common ancestor of the given nodes. Assume no duplicate values.
 
 def lca(bst, node1, node2)
+  #NB: specs break if you don't return a node
 
+  bst.root
 end
 
 
@@ -589,36 +607,52 @@ puts
 
 p ' ---------- Problem 8: LCA ---------- '
 puts
-node1 = bst.find(1.5)
-node2 = bst.find(4)
-target = bst.find(3)
+node1a = bst.find(1.5)
+node1b = bst.find(4)
+
+node2a = bst.find(1.5)
+node2b = bst.find(10)
+
+node3a = bst.find(1.5)
+node3b = bst.find(2)
+
+node4a = bst.find(1.5)
+node4b = bst.find(1.5)
+
+
+
+result1 = lca(bst, node1a, node1b).value
+result2 = lca(bst, node2a, node2b).value
+result3 = lca(bst, node3a, node3b).value
+result4 = lca(bst, node4a, node4b).value
+
+expect1 = bst.find(3).value
+expect2 = bst.find(5).value
+expect3 = bst.find(2).value
+expect4 = bst.find(1.5).value
+
+
 
 p '~~ test 1 ~~'
-p test1 = lca(bst, node1, node2) == target
-
-
-node1 = bst.find(1.5)
-node2 = bst.find(10)
-target = bst.find(5)
+p "  result: #{result1}"
+p "expected: #{expect1}"
+p test1 = result1 == expect1
 
 p '~~ test 2 ~~'
-p test2 = lca(bst, node1, node2) == target
+p "  result: #{result2}"
+p "expected: #{expect2}"
+p test2 = result2 == expect2
 
-
-node1 = bst.find(1.5)
-node2 = bst.find(2)
-target = bst.find(2)
 
 p '~~ test 3 ~~'
-p test3 = lca(bst, node1, node2) == target
-
-
-node1 = bst.find(1.5)
-node2 = bst.find(1.5)
-target = bst.find(1.5)
+p "  result: #{result3}"
+p "expected: #{expect3}"
+p test3 = result3 == expect3
 
 p '~~ test 4 ~~'
-p test4 = lca(bst, node1, node2) == target
+p "  result: #{result4}"
+p "expected: #{expect4}"
+p test4 = result4 == expect4
 
 p8_tests = [test1, test2, test3, test4]
 test_count = p8_tests.count
