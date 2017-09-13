@@ -113,8 +113,8 @@ class BinarySearchTree
   def pre_order_traversal(tree_node = @root, arr = [])
     return [tree_node.value] unless tree_node.children
 
-    left = tree_node.left ? in_order_traversal(tree_node.left) : []
-    right = tree_node.right ? in_order_traversal(tree_node.right) : []
+    left = tree_node.left ? pre_order_traversal(tree_node.left) : []
+    right = tree_node.right ? pre_order_traversal(tree_node.right) : []
 
     [tree_node.value] + left + right
   end
@@ -123,8 +123,8 @@ class BinarySearchTree
   def post_order_traversal(tree_node = @root, arr = [])
     return [tree_node.value] unless tree_node.children
 
-    left = tree_node.left ? in_order_traversal(tree_node.left) : []
-    right = tree_node.right ? in_order_traversal(tree_node.right) : []
+    left = tree_node.left ? post_order_traversal(tree_node.left) : []
+    right = tree_node.right ? post_order_traversal(tree_node.right) : []
 
     left + right + [tree_node.value]
   end
