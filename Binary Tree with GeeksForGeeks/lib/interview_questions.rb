@@ -128,6 +128,11 @@ end
 # Problem 7: Remove paths less than length k
 # ____________________________________________________________________
 
+
+
+
+# # # _____ CODE GRAVEYARD ______ # # #
+
 def limit_path_length(binary_tree, k)
   tree_map = Hash.new { |hash, key| hash[key] = 0 }
   leaves = []
