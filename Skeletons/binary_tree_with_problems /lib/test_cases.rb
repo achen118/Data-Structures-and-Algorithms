@@ -106,29 +106,29 @@ expect2 = bst2_pre_order
 expect3 = bst_post_order
 expect4 = bst2_post_order
 
-p ' ---------- Problem 0: Traversals ---------- '
+puts ' ---------- Problem 0: Traversals ---------- '
 puts
-p 'Pre-Order:'
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts 'Pre-Order:'
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = expect1 == result1
 puts test_result(test1)
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = expect2 == result2
 puts test_result(test2)
 puts
-p 'Post-Order:'
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts 'Post-Order:'
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = expect3 == result3
 puts test_result(test3)
-p '~~ test 4 ~~'
-p "  result: #{result4}"
-p "expected: #{expect4}"
+puts '~~ test 4 ~~'
+puts "  result: #{result4}"
+puts "expected: #{expect4}"
 test4 = expect4 == result4
 puts test_result(test4)
 
@@ -139,7 +139,7 @@ tests_passed = p0_tests.count(true)
 p0_total = tests_passed
 
 puts
-p "passed #{p0_total} out of #{test_count} tests"
+puts "passed #{p0_total} out of #{test_count} tests"
 puts
 
 
@@ -161,29 +161,29 @@ expect3 =  4
 expect4 =  2
 
 
-p ' ---------- Problem 1: Depth ---------- '
+puts ' ---------- Problem 1: Depth ---------- '
 puts
-p 'Minimum Depth:'
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts 'Minimum Depth:'
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = expect1 == result1
 puts test_result(test1)
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = expect2 == result2
 puts test_result(test2)
 puts
-p 'Maximum Depth:'
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts 'Maximum Depth:'
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = expect3 == result3
 puts test_result(test3)
-p '~~ test 4 ~~'
-p "  result: #{result4}"
-p "expected: #{expect4}"
+puts '~~ test 4 ~~'
+puts "  result: #{result4}"
+puts "expected: #{expect4}"
 test4 = expect4 == result4
 puts test_result(test4)
 
@@ -194,7 +194,7 @@ tests_passed = p1_tests.count(true)
 p1_total = tests_passed
 
 puts
-p "passed #{p1_total} out of #{test_count} tests"
+puts "passed #{p1_total} out of #{test_count} tests"
 puts
 
 
@@ -204,7 +204,7 @@ puts
 # ____________________________________________________________________
 # Problem 2: Maximum Path Sum
 
-p ' ---------- Problem 2: Maximum Path Sum ---------- '
+puts ' ---------- Problem 2: Maximum Path Sum ---------- '
 puts
 
 result1 = max_path_sum(bst)
@@ -215,24 +215,24 @@ expect1 = bst_max_path
 expect2 = bst2_max_path
 expect3 = bst2_max_path
 
-p '~~ test 1 ~~'
-p "max path = #{bst_max_path}"
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts '~~ test 1 ~~'
+puts "max path = #{bst_max_path}"
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = expect1 == result1
 puts test_result(test1)
 
-p '~~ test 2 ~~'
-p "max path = #{bst2_max_path}"
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "max path = #{bst2_max_path}"
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = expect2 == result2
 puts test_result(test2)
 
-p '~~ test 3 ~~'
-p "max path = #{bt_max_path}"
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts '~~ test 3 ~~'
+puts "max path = #{bt_max_path}"
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = expect3 == result3
 puts test_result(test3)
 
@@ -244,7 +244,7 @@ tests_passed = p2_tests.count(true)
 p2_total = tests_passed
 
 puts
-p "passed #{p2_total} out of #{test_count} tests"
+puts "passed #{p2_total} out of #{test_count} tests"
 puts
 
 
@@ -255,7 +255,7 @@ puts
 # ____________________________________________________________________
 # Problem 3: Array is Possible Pre-order?
 
-p ' ---------- Problem 3: Possible Pre-Order? ---------- '
+puts ' ---------- Problem 3: Possible Pre-Order? ---------- '
 puts
 
 result1 = possible_pre_order?(bst_pre_order)
@@ -270,27 +270,27 @@ expect4 = false
 
 
 
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = result1 == expect1
 puts test_result(test1)
 
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = result2 == expect2
 puts test_result(test2)
 
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = result3 == expect3
 puts test_result(test3)
 
-p '~~ test 4 ~~'
-p "  result: #{result4}"
-p "expected: #{expect4}"
+puts '~~ test 4 ~~'
+puts "  result: #{result4}"
+puts "expected: #{expect4}"
 test4 = result4 == expect4
 puts test_result(test4)
 
@@ -301,7 +301,7 @@ tests_passed = p3_tests.count(true)
 p3_total = tests_passed
 
 puts
-p "passed #{p3_total} out of #{test_count} tests"
+puts "passed #{p3_total} out of #{test_count} tests"
 puts
 
 
@@ -312,7 +312,7 @@ puts
 # ____________________________________________________________________
 # Problem 4: Full or Nah?
 
-p ' ---------- Problem 4: Full Tree? ---------- '
+puts ' ---------- Problem 4: Full Tree? ---------- '
 puts
 result1 = full_tree?(bst.root)
 result2 = full_tree?(bst2.root)
@@ -324,21 +324,21 @@ expect3 = false
 
 
 
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = result1 == expect1
 puts test_result(test1)
 
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = result2 == expect2
 puts test_result(test2)
 
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = result3 == expect3
 puts test_result(test3)
 
@@ -350,7 +350,7 @@ tests_passed = p4_tests.count(true)
 p4_total = tests_passed
 
 puts
-p "passed #{p4_total} out of #{test_count} tests"
+puts "passed #{p4_total} out of #{test_count} tests"
 puts
 
 
@@ -361,7 +361,7 @@ puts
 # ____________________________________________________________________
 # Problem 5: Bottom View Binary Tree
 
-p ' ---------- Problem 5: Bottom View ---------- '
+puts ' ---------- Problem 5: Bottom View ---------- '
 puts
 
 result1 = bottom_view(bst.root)
@@ -374,21 +374,21 @@ expect3 = bt_bottom_view
 
 
 
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = result1 == expect1
 puts test_result(test1)
 
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = result2 == expect2
 puts test_result(test2)
 
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = result3 == expect3
 puts test_result(test3)
 
@@ -399,7 +399,7 @@ tests_passed = p5_tests.count(true)
 p5_total = tests_passed
 
 puts
-p "passed #{p5_total} out of #{test_count} tests"
+puts "passed #{p5_total} out of #{test_count} tests"
 puts
 
 
@@ -410,7 +410,7 @@ puts
 # ____________________________________________________________________
 # Problem 6: Top View of Binary Tree
 
-p ' ---------- Problem 6: Top View Print ---------- '
+puts ' ---------- Problem 6: Top View Print ---------- '
 puts
 
 result1 = top_view(bst.root)
@@ -423,21 +423,21 @@ expect3 = bt_top_view
 
 
 
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = result1 == expect1
 puts test_result(test1)
 
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = result2 == expect2
 puts test_result(test2)
 
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = result3 == expect3
 puts test_result(test3)
 
@@ -448,7 +448,7 @@ tests_passed = p6_tests.count(true)
 p6_total = tests_passed
 
 puts
-p "passed #{p5_total} out of #{test_count} tests"
+puts "passed #{p5_total} out of #{test_count} tests"
 puts
 
 
@@ -459,7 +459,7 @@ puts
 # ____________________________________________________________________
 # Problem 7: Remove paths greater than length k
 
-p ' ---------- Problem 7: Remove paths of length > K ---------- '
+puts ' ---------- Problem 7: Remove paths of length > K ---------- '
 puts
 
 bst_clone1 = BinarySearchTree.new
@@ -509,33 +509,33 @@ expect5 = bst2_limit_3
 
 
 
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = result1 == expect1
 puts test_result(test1)
 
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = result2 == expect2
 puts test_result(test2)
 
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = result3 == expect3
 puts test_result(test3)
 
-p '~~ test 4 ~~'
-p "  result: #{result4}"
-p "expected: #{expect4}"
+puts '~~ test 4 ~~'
+puts "  result: #{result4}"
+puts "expected: #{expect4}"
 test4 = result4 == expect4
 puts test_result(test4)
 
-p '~~ test 5 ~~'
-p "  result: #{result5}"
-p "expected: #{expect5}"
+puts '~~ test 5 ~~'
+puts "  result: #{result5}"
+puts "expected: #{expect5}"
 test5 = result5 == expect5
 puts test_result(test5)
 
@@ -547,7 +547,7 @@ tests_passed = p7_tests.count(true)
 p7_total = tests_passed
 
 puts
-p "passed #{p7_total} out of #{test_count} tests"
+puts "passed #{p7_total} out of #{test_count} tests"
 puts
 
 #____________________________________________________________________
@@ -555,7 +555,7 @@ puts
 
 
 
-p ' ---------- Problem 8: LCA ---------- '
+puts ' ---------- Problem 8: LCA ---------- '
 puts
 node1a = bst.find(1.5)
 node1b = bst.find(4)
@@ -585,28 +585,28 @@ expect4 = bst.find(1.5).value
 
 
 
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = result1 == expect1
 puts test_result(test1)
 
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = result2 == expect2
 puts test_result(test2)
 
 
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = result3 == expect3
 puts test_result(test3)
 
-p '~~ test 4 ~~'
-p "  result: #{result4}"
-p "expected: #{expect4}"
+puts '~~ test 4 ~~'
+puts "  result: #{result4}"
+puts "expected: #{expect4}"
 test4 = result4 == expect4
 puts test_result(test4)
 
@@ -617,7 +617,7 @@ tests_passed = p8_tests.count(true)
 p8_total = tests_passed
 
 puts
-p "passed #{p8_total} out of #{test_count} tests"
+puts "passed #{p8_total} out of #{test_count} tests"
 puts
 
 
@@ -627,7 +627,7 @@ puts
 # ____________________________________________________________________
 # Problem 9: Subtree of another BST?
 
-p ' ---------- Problem 9: Possible Subtree? ---------- '
+puts ' ---------- Problem 9: Possible Subtree? ---------- '
 puts
 
 result1 = false
@@ -642,27 +642,27 @@ expect4 = true
 
 
 
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = result1 == expect1
 puts test_result(test1)
 
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = result2 == expect2
 puts test_result(test2)
 
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = result3 == expect3
 puts test_result(test3)
 
-p '~~ test 4 ~~'
-p "  result: #{result4}"
-p "expected: #{expect4}"
+puts '~~ test 4 ~~'
+puts "  result: #{result4}"
+puts "expected: #{expect4}"
 test4 = result4 == expect4
 puts test_result(test4)
 
@@ -673,7 +673,7 @@ tests_passed = p9_tests.count(true)
 p9_total = tests_passed
 
 puts
-p "passed #{p9_total} out of #{test_count} tests"
+puts "passed #{p9_total} out of #{test_count} tests"
 puts
 
 
@@ -684,7 +684,7 @@ puts
 # ____________________________________________________________________
 # Problem 10: Reverse Alternate Levels of a Perfect BST
 
-p ' ---------- Problem 10: Possible Subtree? ---------- '
+puts ' ---------- Problem 10: Possible Subtree? ---------- '
 puts
 
 result1 = false
@@ -699,27 +699,27 @@ expect4 = true
 
 
 
-p '~~ test 1 ~~'
-p "  result: #{result1}"
-p "expected: #{expect1}"
+puts '~~ test 1 ~~'
+puts "  result: #{result1}"
+puts "expected: #{expect1}"
 test1 = result1 == expect1
 puts test_result(test1)
 
-p '~~ test 2 ~~'
-p "  result: #{result2}"
-p "expected: #{expect2}"
+puts '~~ test 2 ~~'
+puts "  result: #{result2}"
+puts "expected: #{expect2}"
 test2 = result2 == expect2
 puts test_result(test2)
 
-p '~~ test 3 ~~'
-p "  result: #{result3}"
-p "expected: #{expect3}"
+puts '~~ test 3 ~~'
+puts "  result: #{result3}"
+puts "expected: #{expect3}"
 test3 = result3 == expect3
 puts test_result(test3)
 
-p '~~ test 4 ~~'
-p "  result: #{result4}"
-p "expected: #{expect4}"
+puts '~~ test 4 ~~'
+puts "  result: #{result4}"
+puts "expected: #{expect4}"
 test4 = result4 == expect4
 puts test_result(test4)
 
@@ -730,14 +730,14 @@ tests_passed = p10_tests.count(true)
 p10_total = tests_passed
 
 puts
-p "passed #{p10_total} out of #{test_count} tests"
+puts "passed #{p10_total} out of #{test_count} tests"
 puts
 
 puts
 puts
 
 
-p '____________________________________________________________________'
+puts '____________________________________________________________________'
 
 total_passes = [p0_total, p1_total, p2_total, p3_total, p4_total,
                 p5_total, p6_total, p7_total, p8_total, p9_total,
@@ -753,10 +753,10 @@ test_names = [ "Traversals", "Minimum Depth", "Maximum Path Sum",
                "Reverse Alternate Levels of a Perfect BST"]
 total_tests = all_tests.flatten.count
 
-def display_tests(all_tests)
+def display_tests(all_tests, test_names)
   all_tests.each_with_index do |test_array, problem_number|
     puts
-    puts "Problem #{problem_number + 1}: test_names[problem_number]"
+    puts "Problem #{problem_number + 1}: #{test_names[problem_number]}"
     test_array.each_with_index do |t, i|
       puts "test #{i + 1}: " + test_result(t)
     end
@@ -766,14 +766,14 @@ end
 puts
 puts "Test Results by Problem".colorize(:yellow)
 puts puts
-display_tests(all_tests)
+display_tests(all_tests, test_names)
 
 puts puts puts puts
 
-p '____________________________________________________________________'
+puts '____________________________________________________________________'
 puts 'total passes:'.colorize(:yellow)
-p "#{total_passes} out of #{total_tests}"
+puts "#{total_passes} out of #{total_tests}"
 puts
 puts "#{total_passes} successes".colorize(:green)
 puts "#{total_tests - total_passes} failures".colorize(:light_red)
-p '____________________________________________________________________'
+puts '____________________________________________________________________'
