@@ -110,8 +110,6 @@ class BinarySearchTree
     left + [tree_node.value] + right
   end
 
-
-
   private
   # optional helper methods go here:
 
