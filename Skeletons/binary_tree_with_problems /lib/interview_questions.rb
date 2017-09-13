@@ -12,8 +12,24 @@ require_relative 'binary_tree'
 # ~ # ~ #            binary_search_tree.rb           # ~ # ~ #
 
 
-## NB: No specs for p9 ans p10
+## NB: No specs yet for p9 ans p10
 
+# ____________________________________________________________________
+# Problem 0: Pre-order / Post-Order Traversals
+# ____________________________________________________________________
+
+class BinaryTree
+
+  def pre_order_traversal(tree_node = @root, arr = [])
+    # your code here
+  end
+
+
+  def post_order_traversal(tree_node = @root, arr = [])
+    # your code here
+  end
+
+end
 
 # ____________________________________________________________________
 # Problem 1: Minimum / Maximum Depth
@@ -58,10 +74,6 @@ end
 def bottom_view(root)
 
 end
-
-
-
-
 
 
 # ____________________________________________________________________

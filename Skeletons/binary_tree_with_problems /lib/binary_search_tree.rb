@@ -101,26 +101,19 @@ class BinarySearchTree
 
 
   def in_order_traversal(tree_node = @root, arr = [])
+    return [] unless tree_node
     return [tree_node.value] unless tree_node.children
 
-    left_sub, right_sub = tree_node.left, tree_node.right
-    left_arr, right_arr = [], []
+    left, right = tree_node.left, tree_node.right
 
-    left_arr.concat(in_order_traversal(left_sub)) if left_sub
-    right_arr.concat(in_order_traversal(right_sub)) if right_sub
+
+    left_arr = in_order_traversal(left)
+    right_arr = in_order_traversal(right)
 
     left_arr + [tree_node.value] + right_arr
   end
 
-  def pre_order_traversal(tree_node = @root, arr = [])
-    return [tree_node.value] unless tree_node.children
-    # your code here
-  end
 
-  def post_order_traversal(tree_node = @root, arr = [])
-    return [tree_node.value] unless tree_node.children
-    # your code here
-  end
 
   private
   # optional helper methods go here:
