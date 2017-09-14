@@ -26,6 +26,8 @@ root = bst.root
 #      (1.5)                #
 #############################
 
+{4=>2, 3=>2, 0=>3, 1=>3, 10=>3, 9=>3, 7=>3, 1.5=>4, 2=>4}
+
 bst_pre_order = [5, 3, 1, 0, 2, 1.5, 4, 7, 9, 10]
 bst_post_order = [0, 1.5, 2, 1, 4, 3, 10, 9, 7, 5]
 bst_max_path = [1.5, 2, 1, 3, 5, 7, 9, 10].reduce(:+)
@@ -153,10 +155,10 @@ result2 = minimum_depth(root2)
 result3 = maximum_depth(root)
 result4 = maximum_depth(root2)
 
-expect1 =  3
-expect2 =  2
-expect3 =  5
-expect4 =  3
+expect1 =  2
+expect2 =  1
+expect3 =  4
+expect4 =  2
 
 
 puts ' ---------- Problem 1: Depth ---------- '
@@ -775,6 +777,7 @@ puts
 puts "#{total_passes} successes".colorize(:green)
 puts "#{total_tests - total_passes} failures".colorize(:light_red)
 puts '____________________________________________________________________'
+
 
 p search_tree?(bst.root) == true
 p search_tree?(bst2.root) == true
