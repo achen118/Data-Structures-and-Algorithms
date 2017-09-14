@@ -9,7 +9,7 @@ def minimum_depth(tree_node)
 
   until queue.empty?
     current_node = queue.shift
-    return current_node.depth + 1 if current_node.children.empty?
+    return current_node.depth if current_node.children.empty?
     queue.concat(current_node.children)
   end
 
@@ -17,16 +17,12 @@ end
 
 def maximum_depth(tree_node)
   return 0 unless tree_node
-  depths = [maximum_depth(tree_node.left) + 1, maximum_depth(tree_node.right) + 1]
+  return 0 if tree_node.children.empty?
+  # p 'current_node'
+  # p tree_node.value
+  depths = [maximum_depth(tree_node.left), maximum_depth(tree_node.right)]
   max_depth = depths.max
-  max_depth
-
-  p 'current_node'
-  p tree_node.value
-  p 'depth'
-  p max_depth
-
-  max_depth
+  max_depth + 1
 end
 # ____________________________________________________________________
 # Problem 2: Maximum Path Sum
@@ -237,23 +233,12 @@ end
 # Problem 10: Reverse Alternate Levels of a perfect BST
 # ____________________________________________________________________
 
-# def search_tree?(root, arr = [])
-#   return [] unless node
-#
-#   arr.concat(search_tree?(node.left))
-#   return false if arr[-1] > node.value
-#
-#   arr.concat(search_tree?(node.right))
-#
-#   true
-# end
-
 
 def search_tree?(root)
   return true unless root
 
   left, right = root.left, root.right
-
+  
   if left
     return false unless left.value <= root.value
   end
@@ -261,5 +246,5 @@ def search_tree?(root)
     return false unless right.value > root.value
   end
 
-  search_tree?(root.left) && search_tree?(root.right)
+  search_tree(root.left) && search_tree(root.right)
 end

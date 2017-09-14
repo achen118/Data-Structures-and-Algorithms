@@ -8,7 +8,7 @@ end
 def reverse_traversal(tree_node, k, counter)
   if tree_node && counter[:count] < k
     counter = reverse_traversal(tree_node.right, k, counter)
-    
+
     if counter[:count] < k
       counter[:count] += 1
       counter[:current_node] = tree_node
