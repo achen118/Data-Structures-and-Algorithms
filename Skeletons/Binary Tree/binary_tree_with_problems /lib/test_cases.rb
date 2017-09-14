@@ -26,8 +26,6 @@ root = bst.root
 #      (1.5)                #
 #############################
 
-{4=>2, 3=>2, 0=>3, 1=>3, 10=>3, 9=>3, 7=>3, 1.5=>4, 2=>4}
-
 bst_pre_order = [5, 3, 1, 0, 2, 1.5, 4, 7, 9, 10]
 bst_post_order = [0, 1.5, 2, 1, 4, 3, 10, 9, 7, 5]
 bst_max_path = [1.5, 2, 1, 3, 5, 7, 9, 10].reduce(:+)
@@ -744,21 +742,23 @@ puts '____________________________________________________________________'
 total_passes = [p0_total, p1_total, p2_total, p3_total, p4_total,
                 p5_total, p6_total, p7_total, p8_total, p9_total,
                 p10_total].reduce(:+)
-all_tests = [p0_tests, p1_tests, p2_tests, p3_tests, p4_tests,
-               p5_tests, p6_tests, p7_tests, p8_tests, p9_tests,
-               p10_tests]
+
+all_tests = [p0_tests, p1_tests, p2_tests, p3_tests, p4_tests, p5_tests,
+             p6_tests, p7_tests, p8_tests, p9_tests, p10_tests]
+
 test_names = [ "Traversals", "Minimum Depth", "Maximum Path Sum",
                "Array is Possible Pre-order?", "Full or Nah?",
                "Bottom View Binary Tree",
                "Top View of Binary Tree", "Remove paths greater than length k",
                "Lowest Common Ancestor", "Subtree of another BST?",
                "Reverse Alternate Levels of a Perfect BST"]
+               
 total_tests = all_tests.flatten.count
 
 def display_tests(all_tests, test_names)
   all_tests.each_with_index do |test_array, problem_number|
     puts
-    puts "Problem #{problem_number + 1}: #{test_names[problem_number]}"
+    puts "Problem #{problem_number}: #{test_names[problem_number]}"
     test_array.each_with_index do |t, i|
       puts "test #{i + 1}: " + test_result(t)
     end
