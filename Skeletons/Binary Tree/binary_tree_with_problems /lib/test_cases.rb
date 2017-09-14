@@ -155,10 +155,12 @@ result2 = minimum_depth(root2)
 result3 = maximum_depth(root)
 result4 = maximum_depth(root2)
 
-expect1 =  2
-expect2 =  1
-expect3 =  4
-expect4 =  2
+i = zero_indexed_depth? ? 0 : 1
+
+expect1 = 2 + i
+expect2 = 1 + i
+expect3 = 4 + i
+expect4 = 2 + i
 
 
 puts ' ---------- Problem 1: Depth ---------- '

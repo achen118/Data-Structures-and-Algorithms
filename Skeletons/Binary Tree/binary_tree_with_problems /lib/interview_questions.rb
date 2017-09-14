@@ -35,6 +35,14 @@ end
 # Problem 1: Minimum / Maximum Depth
 # ____________________________________________________________________
 
+      # # NB: if you want to count your root node as 0 depth,
+      # # change the method, zero_indexed_depth?, to true
+      # # and it will flow through the test cases
+
+def zero_indexed_depth?
+  false
+end
+
 def minimum_depth(tree_node)
 
 end
