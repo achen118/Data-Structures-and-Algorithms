@@ -1,5 +1,4 @@
-require_relative 'binary_search_tree'
-require_relative 'binary_tree'
+
 # ____________________________________________________________________
 # Problem 1: Minimum / Maximum Depth
 # ____________________________________________________________________
@@ -238,7 +237,7 @@ def search_tree?(root)
   return true unless root
 
   left, right = root.left, root.right
-  
+
   if left
     return false unless left.value <= root.value
   end

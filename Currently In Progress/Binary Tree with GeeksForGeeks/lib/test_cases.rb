@@ -1,6 +1,6 @@
-require_relative 'binary_search_tree'
-require_relative 'binary_tree'
-require_relative 'interview_questions'
+require_relative 'binary_search_tree.rb'
+require_relative 'binary_tree.rb'
+require_relative 'interview_questions.rb'
 require 'colorize'
 
 # ____________________________________________________________________

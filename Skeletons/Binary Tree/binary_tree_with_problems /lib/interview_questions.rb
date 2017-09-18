@@ -6,7 +6,7 @@
 # http://www.geeksforgeeks.org/top-10-algorithms-in-interview-questions/#algo4 #
 
 # ~ # ~ #             TODO: run the specs by         # ~ # ~ #
-# ~ # ~ #         running the folling command        # ~ # ~ #
+# ~ # ~ #    running the folling terminal command    # ~ # ~ #
 # ~ # ~ #           from the root directory:         # ~ # ~ #
 
 # ~ # ~ #            ruby lib/test_cases.rb          # ~ # ~ #
